@@ -1,0 +1,52 @@
+<div class="container-fluid row col-sm-12">
+
+    <div class="col-sm-12 col-md-6" style=" margin: auto">
+
+
+        <input class="form-control" name="filtroVehiculo" [(ngModel)]="filtroVehiculo" placeholder="Buscar Vehiculo" style=" margin: 40px 0pc 40px 0pc" />
+        <table class="table table-striped" style="border-bottom: 4px solid #ddd;">
+            <thead>
+                <tr>
+                    <th scope="col">Placa</th>
+                    <th scope="col">Tipo de vehiculo</th>
+                    <th scope="col">hora de ingreso</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let vehiculo of vehiculos | filtro:filtroVehiculo">
+                    <td>{{vehiculo.placa}}</td>
+                    <td>{{vehiculo.tipoVehiculo}}</td>
+                    <td>{{vehiculo.fechaIngreso | date:'medium'}}</td>
+                    <td>
+                        <button type="button" name="salir" (click)="registrarSalida()" class=" btn btn-primary btn-sm" [routerLink]="['/parqueadero', vehiculo.placa]">salir</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="container col-sm-12 col-md-3 " style="padding-top:30px; border-left: 1px solid #ddd;margin: auto; position: fixed;">
+        <h4 style="margin-bottom: 20px">Crear Nuevo registro en el parqueadero</h4>
+
+        <form>
+            <div class="form-group">
+                <label for="placa">Placa</label>
+                <input type="text" name="placa" class="form-control" [(ngModel)]="vehiculo.placa" placeholder="Ingrese Placa del vehiculo">
+                <small id="emailHelp" class="form-text text-muted">La placa debe tener al menos 5 carcateres</small>
+            </div>
+            <div class="form-group">
+                <label for="tipoVehiculo">Tipo de vehiculo</label>
+                <input type="text" name="tipoVehiculo" class="form-control" [(ngModel)]="vehiculo.tipoVehiculo" placeholder="Ingrese tipo de vehiculo">
+                <small id="emailHelp" class="form-text text-muted">Debe ser carro o moto</small>
+            </div>
+            <div class="form-check">
+                <label for="clinidraje">Clinidraje</label>
+
+                <input type="number" name="cilindraje" class="form-control" [(ngModel)]="vehiculo.cilindraje">
+            </div>
+            <button class="btn-danger btn" type="button" routerLink="/parqueadero" (click)='registrarVehiculoParqueadero()'>Crear</button>
+        </form>
+
+    </div>
+</div>

@@ -35,8 +35,9 @@ export class VehiculosComponent implements OnInit {
     );
   }
 
-  public registrarSalida(): void {
-    this.vehiculoService.registrarSalidaVehiculo(this.vehiculo.placa)
+  public registrarSalida(placa: string): void {
+    console.log(placa);
+    this.vehiculoService.registrarSalidaVehiculo(placa)
     .subscribe(vehiculo => {
       this.router.navigate(['/parqueadero']);
     });

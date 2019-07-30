@@ -23,6 +23,7 @@ export class VehiculoService {
   }
 
   registrarSalidaVehiculo(placa:string): Observable<Vehiculo> {
-    return this.http.put<Vehiculo>( this.urlEndPoint +"/"+ placa, placa, {headers: this.httHeaders});
+    console.log(placa);
+    return this.http.put<Vehiculo>(`${this.urlEndPoint}/${placa}`, {headers: this.httHeaders});
   }
 }

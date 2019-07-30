@@ -1,10 +1,11 @@
 <div class="container-fluid row col-sm-12">
 
     <div class="col-sm-12 col-md-6" style=" margin: auto">
+        <h1 style="text-align: center">Vehiculos parqueados ahora</h1>
 
 
         <input class="form-control" name="filtroVehiculo" [(ngModel)]="filtroVehiculo" placeholder="Buscar Vehiculo" style=" margin: 40px 0pc 40px 0pc" />
-        <table class="table table-striped" style="border-bottom: 4px solid #ddd;">
+        <table class="table table-striped" style="border-top: 4px solid #ddd;">
             <thead>
                 <tr>
                     <th scope="col">Placa</th>
@@ -18,7 +19,7 @@
                     <td>{{vehiculo.tipoVehiculo}}</td>
                     <td>{{vehiculo.fechaIngreso | date:'medium'}}</td>
                     <td>
-                        <button type="button" name="salir" (click)="registrarSalida()" class=" btn btn-primary btn-sm" [routerLink]="['/parqueadero', vehiculo.placa]">salir</button>
+                        <button type="button" name="salir" (click)="registrarSalida(vehiculo.placa)" class=" btn btn-primary btn-sm" [routerLink]="['/parqueadero', vehiculo.placa]">salir</button>
                     </td>
                 </tr>
             </tbody>

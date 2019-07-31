@@ -4,6 +4,7 @@ import { from } from 'rxjs';
 import { VehiculoService } from '../core/vehiculo.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { error } from '@angular/compiler/src/util';
 
 @Component({
   selector: './app-vehiculo',
@@ -27,11 +28,10 @@ export class VehiculosComponent implements OnInit {
   }
 
   public registrarVehiculoParqueadero(): void {
-    console.log("asdasdasd")
     this.vehiculoService.registrarVehiculo(this.vehiculo).subscribe( vehiculo => {
-      this.router.navigate(['/parqueadero'])
+      this.router.navigate(['/parqueadero']);
       Swal.fire('Nuevo vehiculo registrado', `Vehiculo con placa ${this.vehiculo.placa} registrado con exito`, 'success')
-    }
+    }, error => Swal.fire(error.error.message, '', 'error')
     );
   }
 
@@ -39,6 +39,7 @@ export class VehiculosComponent implements OnInit {
     console.log(placa);
     this.vehiculoService.registrarSalidaVehiculo(placa)
     .subscribe(vehiculo => {
+      Swal.fire('Vehiculo retirado ','', 'success')
       this.router.navigate(['/parqueadero']);
     });
   }

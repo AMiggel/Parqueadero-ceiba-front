@@ -1,10 +1,10 @@
 <div class="container-fluid row col-sm-12">
 
     <div class="col-sm-12 col-md-6" style=" margin: auto">
-        <h1 style="text-align: center">Vehiculos parqueados ahora</h1>
+        <h1 style="text-align: center">Vehiculos parqueados</h1>
 
 
-        <input class="form-control" name="filtroVehiculo" [(ngModel)]="filtroVehiculo" placeholder="Buscar Vehiculo" style=" margin: 40px 0pc 40px 0pc" />
+        <input class="form-control" id="busquedaVehiculo" name="filtroVehiculo" [(ngModel)]="filtroVehiculo" placeholder="Buscar Vehiculo" style=" margin: 40px 0pc 40px 0pc" />
         <table class="table table-striped" style="border-top: 4px solid #ddd;">
             <thead>
                 <tr>
@@ -19,7 +19,7 @@
                     <td>{{vehiculo.tipoVehiculo}}</td>
                     <td>{{vehiculo.fechaIngreso | date:'medium'}}</td>
                     <td>
-                        <button type="button" name="salir" (click)="registrarSalida(vehiculo.placa)" class=" btn btn-primary btn-sm" [routerLink]="['/parqueadero', vehiculo.placa]">salir</button>
+                        <button id="sacarVehiculo" type="button" name="salir" (click)="registrarSalida(vehiculo.placa)" class=" btn btn-primary btn-sm" [routerLink]="['/parqueadero', vehiculo.placa]">salir</button>
                     </td>
                 </tr>
             </tbody>
@@ -27,26 +27,26 @@
     </div>
 
 
-    <div class="container col-sm-12 col-md-3 " style="padding-top:30px; border-left: 1px solid #ddd;margin: auto; position: fixed;">
+    <div class="container col-sm-12 col-md-3 " style="padding-top:30px; border-left: 1px solid #ddd;margin: auto; position: fixed; ">
         <h4 style="margin-bottom: 20px">Crear Nuevo registro en el parqueadero</h4>
 
         <form>
             <div class="form-group">
                 <label for="placa">Placa</label>
-                <input type="text" name="placa" class="form-control" [(ngModel)]="vehiculo.placa" placeholder="Ingrese Placa del vehiculo">
+                <input id="placaVehiculo" type="text" name="placa" class="form-control" [(ngModel)]="vehiculo.placa" placeholder="Ingrese Placa del vehiculo">
                 <small id="emailHelp" class="form-text text-muted">La placa debe tener al menos 5 carcateres</small>
             </div>
             <div class="form-group">
                 <label for="tipoVehiculo">Tipo de vehiculo</label>
-                <input type="text" name="tipoVehiculo" class="form-control" [(ngModel)]="vehiculo.tipoVehiculo" placeholder="Ingrese tipo de vehiculo">
+                <input id="tipoVehiculo" type="text" name="tipoVehiculo" class="form-control" [(ngModel)]="vehiculo.tipoVehiculo" placeholder="Ingrese tipo de vehiculo">
                 <small id="emailHelp" class="form-text text-muted">Debe ser carro o moto</small>
             </div>
             <div class="form-check">
-                <label for="clinidraje">Clinidraje</label>
+                <label for="cilindraje">Cilindraje</label>
 
-                <input type="number" name="cilindraje" class="form-control" [(ngModel)]="vehiculo.cilindraje">
+                <input type="number" id="cilindrajeVehiculo" name="cilindraje" class="form-control" [(ngModel)]="vehiculo.cilindraje">
             </div>
-            <button class="btn-danger btn" type="button" routerLink="/parqueadero" (click)='registrarVehiculoParqueadero()'>Crear</button>
+            <button class="btn-danger btn" id="crearVehiculo" type="button" routerLink="/parqueadero" (click)='registrarVehiculoParqueadero()'>Crear</button>
         </form>
 
     </div>

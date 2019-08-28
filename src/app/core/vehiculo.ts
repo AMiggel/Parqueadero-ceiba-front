@@ -1,7 +1,8 @@
 
 export class Vehiculo {
-placa:string;
-tipoVehiculo:string;
-fechaIngreso:Date ;
-cilindraje:number;
+placa: string;
+tipoVehiculo: string;
+fechaIngreso: Date ;
+cilindraje: number;
+valorCobro: number;
 }

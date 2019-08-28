@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable, of, from} from 'rxjs';
 import { Vehiculo } from './vehiculo';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -9,7 +10,7 @@ import { Vehiculo } from './vehiculo';
 })
 export class VehiculoService {
 
-  private urlEndPoint: string = 'http://localhost:3000/parqueadero';
+  private urlEndPoint: string = environment.url;
   private httHeaders = new HttpHeaders({'Content-type': 'application/json'});
 
   constructor(private http: HttpClient) { }
@@ -22,8 +23,7 @@ export class VehiculoService {
     return this.http.post<Vehiculo>(this.urlEndPoint, vehiculo, {headers: this.httHeaders});
   }
 
-  registrarSalidaVehiculo(placa:string): Observable<Vehiculo> {
-    console.log(placa);
+  registrarSalidaVehiculo(placa: String): Observable<Vehiculo> {
     return this.http.put<Vehiculo>(`${this.urlEndPoint}/${placa}`, {headers: this.httHeaders});
   }
 }

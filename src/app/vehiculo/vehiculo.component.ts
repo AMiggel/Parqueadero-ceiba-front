@@ -28,7 +28,8 @@ export class VehiculosComponent implements OnInit {
   }
 
   public registrarVehiculoParqueadero(): void {
-    this.vehiculoService.registrarVehiculo(this.vehiculo).subscribe( vehiculo => {
+    this.vehiculoService.registrarVehiculo(this.vehiculo)
+    .subscribe( vehiculo => {
       this.router.navigate(['/parqueadero']);
       Swal.fire('Nuevo vehiculo registrado', `Vehiculo con placa ${this.vehiculo.placa} registrado con exito`, 'success')
     }, error => Swal.fire(error.error.message, '', 'error')
@@ -36,10 +37,9 @@ export class VehiculosComponent implements OnInit {
   }
 
   public registrarSalida(placa: string): void {
-    console.log(placa);
     this.vehiculoService.registrarSalidaVehiculo(placa)
     .subscribe(vehiculo => {
-      Swal.fire('Vehiculo retirado ','', 'success')
+      Swal.fire('Vehiculo retirado ', `Valor a cobrar ${this.vehiculo.valorCobro} `, 'success')
       this.router.navigate(['/parqueadero']);
     });
   }
